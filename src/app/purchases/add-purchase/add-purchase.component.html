@@ -1,0 +1,23 @@
+<mat-toolbar color="primary">
+  <a routerLink="/" mat-icon-button>
+    <mat-icon>arrow_back</mat-icon>
+  </a> Add purchase
+</mat-toolbar>
+
+<div class="form-container">
+  <mat-form-field>
+    <input matInput placeholder="Purchase">
+  </mat-form-field>
+
+
+  <mat-form-field>
+    <input matInput placeholder="Price" [ngModel]="model.price" (ngModelChange)="model.price = $event; pricePreview = evaluateTerm($event)">
+    <mat-hint align="end">= {{pricePreview === undefined ? 'NaN' : pricePreview | currency:'EUR'}}</mat-hint>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-select placeholder="Purchaser" [(ngModel)]="model.purchaser">
+      <mat-option *ngFor="let purchaser of purchasers$ | async" value="purchaser">{{purchaser}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>

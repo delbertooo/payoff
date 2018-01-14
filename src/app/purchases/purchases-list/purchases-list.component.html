@@ -1,0 +1,23 @@
+<mat-toolbar color="primary">
+  <mat-icon>all_inclusive</mat-icon> Payoff
+</mat-toolbar>
+
+<a mat-fab routerLink="add" class="add-button">
+  <mat-icon aria-label="Add a purchase">add</mat-icon>
+</a>
+
+<mat-list>
+  <ng-container *ngFor="let year of years$ | async; let first = first">
+    <mat-divider *ngIf="!first"></mat-divider>
+    <h3 matSubheader>{{year.year}} ({{year.purchases}} purchases)
+      <button *ngIf="!isYearLoaded(year)" mat-button color="primary" (click)="loadPurchases(year.year)">Load</button>
+    </h3>
+    <ng-container *ngIf="isYearLoaded(year)">
+      <mat-list-item *ngFor="let purchase of loadedYears[year.year] | async">
+        <mat-icon matListIcon>folder</mat-icon>
+        <h4 matLine>{{purchase.purchaser}}</h4>
+        <p matLine> {{purchase.date | date}}</p>
+      </mat-list-item>
+    </ng-container>
+  </ng-container>
+</mat-list>
