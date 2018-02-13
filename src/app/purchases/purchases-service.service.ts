@@ -19,8 +19,16 @@ export class PurchasesService {
   findPurchases(year: number): Observable<Purchase[]> {
     return Observable.of([
       {
+        item: 'Lachs in Safransoße',
         purchaser: 'delbertooo',
         date: '2017-12-28T15:51:03.000Z',
+        participants: ['delbertooo', 'masuuk'],
+        price: 13.37,
+      },
+      {
+        item: 'Ei auf Bananenbrot in Weizenschleim',
+        purchaser: 'masuuk',
+        date: '2017-12-01T15:51:03.000Z',
         participants: ['delbertooo', 'masuuk'],
         price: 13.37,
       }
@@ -36,6 +44,7 @@ export class PurchaseYear {
 }
 
 export class Purchase {
+  item: string;
   purchaser: string;
   date: string;
   participants: string[];

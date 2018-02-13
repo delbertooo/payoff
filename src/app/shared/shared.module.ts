@@ -9,6 +9,9 @@ import { MatListModule } from '@angular/material/list';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
+import { MatChipsModule } from '@angular/material/chips';
+
+import { FancyDateComponent } from './fancy-date/fancy-date.component';
 
 @NgModule({
   imports: [
@@ -19,7 +22,8 @@ import { MatSelectModule } from '@angular/material/select';
     MatListModule,
     MatFormFieldModule,
     MatInputModule,
-    MatSelectModule
+    MatSelectModule,
+    MatChipsModule,
   ],
   exports: [
     CommonModule,
@@ -29,8 +33,12 @@ import { MatSelectModule } from '@angular/material/select';
     MatListModule,
     MatFormFieldModule,
     MatInputModule,
-    MatSelectModule
+    MatSelectModule,
+    FancyDateComponent,
+    MatChipsModule,
   ],
-  declarations: []
+  declarations: [
+    FancyDateComponent,
+  ]
 })
 export class SharedModule { }

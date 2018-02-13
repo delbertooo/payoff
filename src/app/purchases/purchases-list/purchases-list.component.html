@@ -13,10 +13,21 @@
       <button *ngIf="!isYearLoaded(year)" mat-button color="primary" (click)="loadPurchases(year.year)">Load</button>
     </h3>
     <ng-container *ngIf="isYearLoaded(year)">
-      <mat-list-item *ngFor="let purchase of loadedYears[year.year] | async">
-        <mat-icon matListIcon>folder</mat-icon>
-        <h4 matLine>{{purchase.purchaser}}</h4>
-        <p matLine> {{purchase.date | date}}</p>
+      <mat-list-item *ngFor="let purchase of loadedYears[year.year] | async" (click)="purchase.$detailsVisible = !purchase.$detailsVisible">
+        <!--<mat-icon matListIcon>folder</mat-icon>-->
+        <app-fancy-date matListAvatar [date]="purchase.date"></app-fancy-date>
+        <h4 matLine>{{purchase.item}}</h4>
+        <p matLine [class.hidden]="purchase.$detailsVisible" class="hidable"><span class="participant-detail"><span>delbertooo</span> <span>{{13.37|currency}}</span></span></p>
+        <p matLine [class.hidden]="purchase.$detailsVisible" class="hidable"><span class="participant-detail"><span>masuuk</span> <span>{{-6.37|currency}}</span></span></p>
+        <!--<p matLine> {{purchase.date | date}}</p>-->
+        <mat-chip-list matLine>
+          <mat-chip *ngFor="let x of [1,2,3,4,5,6,7,8,9,10]">OF</mat-chip>
+          <mat-chip *ngFor="let x of [1,2,3,4,5,6,7,8,9,10]">OF</mat-chip>
+          <mat-chip>TF</mat-chip>
+          <mat-chip color="primary" selected="true">PF</mat-chip>
+          <mat-chip color="accent" selected="true">AF</mat-chip>
+        </mat-chip-list>
+        <div style="display: inline-block">{{1337|currency}}</div>
       </mat-list-item>
     </ng-container>
   </ng-container>

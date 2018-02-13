@@ -3,3 +3,29 @@
     bottom: 16px;
     right: 16px;
 }
+
+.participant-detail {
+    display: flex;
+    > :nth-child(1) {
+      flex: 1 1 auto;
+    }
+}
+
+.mat-chip:not(.mat-basic-chip)+.mat-chip:not(.mat-basic-chip) {
+    margin: 0 8px 0 0;
+}
+
+.mat-chip:not(.mat-basic-chip) {
+    margin: 0 8px 0 0;
+}
+
+.mat-line.hidable {
+    height: 20px;
+    transition: height 1s;
+}
+
+.mat-line.hidable.hidden {
+    overflow: hidden;
+    height: 0;
+    line-height: 0;
+}

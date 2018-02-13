@@ -1,0 +1,10 @@
+.fancy-date {
+    display: inline-block;
+    text-align: center;
+    > div:nth-child(1) {
+        font-size: 20px;
+    }
+    > div:nth-child(2) {
+        font-size: 13px;
+    }
+}
