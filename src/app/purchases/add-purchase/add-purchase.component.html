@@ -20,4 +20,10 @@
       <mat-option *ngFor="let purchaser of purchasers$ | async" value="purchaser">{{purchaser}}</mat-option>
     </mat-select>
   </mat-form-field>
+
+  <mat-form-field>
+    <mat-select placeholder="Participants" [(ngModel)]="model.participants" multiple>
+      <mat-option *ngFor="let participant of purchasers$ | async" [value]="participant">{{participant}}</mat-option>
+    </mat-select>
+  </mat-form-field>
 </div>

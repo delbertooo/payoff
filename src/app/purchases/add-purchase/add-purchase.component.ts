@@ -19,7 +19,8 @@ export class AddPurchaseComponent implements OnInit {
     this.purchasers$ = this.usersService.findPurchasers();
     this.model = {
       price: undefined,
-      purchaser: this.usersService.loadDefaultPurchaser() || ''
+      purchaser: this.usersService.loadDefaultPurchaser() || '',
+      participants: undefined,
     };
   }
 
