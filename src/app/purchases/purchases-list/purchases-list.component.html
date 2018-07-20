@@ -2,10 +2,6 @@
   <mat-icon>all_inclusive</mat-icon> Payoff
 </mat-toolbar>
 
-<a mat-fab routerLink="add" class="add-button">
-  <mat-icon aria-label="Add a purchase">add</mat-icon>
-</a>
-
 <mat-list class="mat-list-multi-line">
   <ng-container *ngFor="let year of years$ | async; let first = first">
     <mat-divider *ngIf="!first"></mat-divider>
@@ -28,3 +24,7 @@
     </ng-container>
   </ng-container>
 </mat-list>
+
+<a mat-fab routerLink="add" class="add-button">
+  <mat-icon aria-label="Add a purchase">add</mat-icon>
+</a>
