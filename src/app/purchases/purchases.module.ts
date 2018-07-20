@@ -7,6 +7,7 @@ import { AddPurchaseComponent } from './add-purchase/add-purchase.component';
 
 import { FormsModule } from '@angular/forms';
 import { UsersService } from './users-service.service';
+import { ParticipantsListComponent } from './participants-list/participants-list.component';
 
 @NgModule({
   imports: [
@@ -15,6 +16,6 @@ import { UsersService } from './users-service.service';
     FormsModule
   ],
   providers: [PurchasesService, UsersService],
-  declarations: [PurchasesListComponent, AddPurchaseComponent]
+  declarations: [PurchasesListComponent, AddPurchaseComponent, ParticipantsListComponent]
 })
 export class PurchasesModule { }

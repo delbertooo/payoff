@@ -3,3 +3,14 @@
 body {
     margin: 0;
 }
+
+.mat-list.mat-list-multi-line {
+    .mat-list-item {
+        height: auto !important;
+        padding: 16px 0;
+        
+        .mat-list-item-content {
+            height: auto;
+        }
+    }
+}

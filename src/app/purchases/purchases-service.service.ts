@@ -11,8 +11,8 @@ export class PurchasesService {
 
   findYears(): Observable<PurchaseYear[]> {
     return Observable.of([
-      { year: 2017, purchases: 1 },
-      { year: 2016, purchases: 102 }
+      { year: 2018, purchases: 1 },
+      { year: 2017, purchases: 102 }
     ]).delay(250);
   }
 
