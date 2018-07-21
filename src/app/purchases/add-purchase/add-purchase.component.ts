@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatSnackBar } from '@angular/material';
 import { UsersService } from '../users-service.service';
 import { Observable } from 'rxjs/Observable';
+import { PurchasesService, PurchaseCreate } from '../purchases-service.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-add-purchase',
@@ -8,12 +11,18 @@ import { Observable } from 'rxjs/Observable';
   styleUrls: ['./add-purchase.component.scss']
 })
 export class AddPurchaseComponent implements OnInit {
-  model: any;
+  model: PurchaseCreate;
   purchasers$: Observable<string[]>;
+  @ViewChild('form')
+  form: NgForm;
 
   pricePreview = undefined;
 
-  constructor(private usersService: UsersService) { }
+  constructor(
+    private usersService: UsersService,
+    private purchasesService: PurchasesService,
+    private snackBar: MatSnackBar,
+  ) { }
 
   ngOnInit() {
     this.purchasers$ = this.usersService.findPurchasers();
@@ -22,6 +31,23 @@ export class AddPurchaseComponent implements OnInit {
       purchaser: this.usersService.loadDefaultPurchaser() || '',
       participants: undefined,
     };
+  }
+
+  save(): void {
+    if (!this.form.valid) {
+      this.snackBar.open('Please check your inputs!');
+      return;
+    }
+    this.purchasesService
+      .savePurchase({
+        price: this.pricePreview,
+        purchaser: this.model.purchaser,
+        participants: this.model.participants,
+      })
+      .subscribe(
+        () => console.log('redirect to list'),
+        e => this.snackBar.open('An error occured :(')
+      );
   }
 
   evaluateTerm(input: string): number {

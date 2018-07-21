@@ -35,8 +35,18 @@ export class PurchasesService {
     ]).delay(250);
   }
 
+  savePurchase(create: PurchaseCreate): Observable<void> {
+    console.log('Save', create);
+    return Observable.of(null).delay(250);
+  }
+
 }
 
+export interface PurchaseCreate {
+  price: number,
+  purchaser: string,
+  participants: string[],
+}
 
 export class PurchaseYear {
   year: number;
