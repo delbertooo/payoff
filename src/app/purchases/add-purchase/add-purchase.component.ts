@@ -35,7 +35,7 @@ export class AddPurchaseComponent implements OnInit {
 
   save(): void {
     if (!this.form.valid) {
-      this.snackBar.open('Please check your inputs!');
+      this.snackBar.open('Please check your inputs!', undefined, {duration: 2000});
       return;
     }
     this.purchasesService
@@ -46,7 +46,7 @@ export class AddPurchaseComponent implements OnInit {
       })
       .subscribe(
         () => console.log('redirect to list'),
-        e => this.snackBar.open('An error occured :(')
+        e => this.snackBar.open('An error occured :(', undefined, {duration: 2000})
       );
   }
 
