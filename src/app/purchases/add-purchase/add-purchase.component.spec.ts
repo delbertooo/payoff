@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AddPurchaseComponent } from './add-purchase.component';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 import { PurchasesService } from '../purchases-service.service';
 import { UsersService } from '../users-service.service';
 import { MatSnackBar } from '@angular/material';
@@ -13,9 +13,10 @@ describe('AddPurchaseComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [FormsModule],
+      imports: [],
       declarations: [ AddPurchaseComponent ],
       providers: [
+        FormBuilder,
         { provide: PurchasesService, useValue: {} },
         { provide: UsersService, useValue: {findPurchasers() { }, loadDefaultPurchaser() { }} },
         { provide: MatSnackBar, useValue: {} },
