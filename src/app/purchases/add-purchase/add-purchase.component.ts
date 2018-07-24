@@ -33,7 +33,7 @@ export class AddPurchaseComponent implements OnInit {
       price: ['', Validators.required],
       calculatedPrice: [null, Validators.required],
       purchaser: [initialPurchaser, Validators.required],
-      participants: [[], Validators.required],
+      participants: [[], Validators.compose([Validators.required, Validators.minLength(1)])],
     });
     this.purchaseForm.get('price').valueChanges.subscribe(price => this.purchaseForm.patchValue({
         calculatedPrice: this.evaluateTerm(price),
@@ -43,7 +43,7 @@ export class AddPurchaseComponent implements OnInit {
   save(): void {
     if (!this.purchaseForm.valid) {
       console.warn('invalid', this.purchaseForm.value)
-      this.snackBar.open('Please check your inputs!', undefined, {duration: 2000});
+      this.snackBar.open('Please check your input data!', undefined, {duration: 2000});
       return;
     }
     const val = this.purchaseForm.value;

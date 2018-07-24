@@ -13,23 +13,23 @@
 <div class="form-container">
   <form [formGroup]="purchaseForm">
     <mat-form-field>
-      <input matInput placeholder="Purchase" formControlName="purchase">
+      <input matInput placeholder="Purchase" required formControlName="purchase">
     </mat-form-field>
 
 
     <mat-form-field>
-      <input matInput placeholder="Price" formControlName="price">
+      <input matInput placeholder="Price" required formControlName="price">
       <mat-hint align="end">= {{calculatedPrice.value === null ? 'NaN' : calculatedPrice.value | currency:'EUR'}}</mat-hint>
     </mat-form-field>
 
     <mat-form-field>
-      <mat-select placeholder="Purchaser" formControlName="purchaser">
+      <mat-select placeholder="Purchaser" required formControlName="purchaser">
         <mat-option *ngFor="let purchaser of purchasers$ | async" value="purchaser">{{purchaser}}</mat-option>
       </mat-select>
     </mat-form-field>
 
     <mat-form-field>
-      <mat-select placeholder="Participants" formControlName="participants" multiple>
+      <mat-select placeholder="Participants" required formControlName="participants" multiple>
         <mat-option *ngFor="let participant of purchasers$ | async" [value]="participant">{{participant}}</mat-option>
       </mat-select>
     </mat-form-field>
