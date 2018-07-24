@@ -32,9 +32,9 @@ export class AddPurchaseComponent implements OnInit {
     this.purchaseForm = this.fb.group({
       purchase: ['', Validators.required],
       price: ['', this.validCalculatedPrice()],
-      calculatedPrice: [null, Validators.compose([Validators.required, Validators.max(Number.MAX_VALUE)])],
+      calculatedPrice: [null, [Validators.required, Validators.max(Number.MAX_VALUE)]],
       purchaser: [initialPurchaser, Validators.required],
-      participants: [[], Validators.compose([Validators.required, Validators.minLength(1)])],
+      participants: [[], [Validators.required, Validators.minLength(1)]],
     });
     this.purchaseForm.get('price').valueChanges.subscribe(price => {
       this.calculatedPrice.setValue(evaluateTerm(price));
