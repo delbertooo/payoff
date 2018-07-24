@@ -1,9 +1,9 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material';
 import { UsersService } from '../users-service.service';
 import { Observable } from 'rxjs/Observable';
-import { PurchasesService, PurchaseCreate } from '../purchases-service.service';
-import { NgForm } from '@angular/forms';
+import { PurchasesService } from '../purchases-service.service';
+import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 
 @Component({
   selector: 'app-add-purchase',
@@ -11,38 +11,48 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./add-purchase.component.scss']
 })
 export class AddPurchaseComponent implements OnInit {
-  model: PurchaseCreate;
   purchasers$: Observable<string[]>;
-  @ViewChild('form')
-  form: NgForm;
-
-  pricePreview = undefined;
+  purchaseForm: FormGroup;
 
   constructor(
     private usersService: UsersService,
     private purchasesService: PurchasesService,
     private snackBar: MatSnackBar,
+    private fb: FormBuilder,
   ) { }
+
+  get calculatedPrice(): AbstractControl {
+    return this.purchaseForm.get('calculatedPrice');
+  }
 
   ngOnInit() {
     this.purchasers$ = this.usersService.findPurchasers();
-    this.model = {
-      price: undefined,
-      purchaser: this.usersService.loadDefaultPurchaser() || '',
-      participants: undefined,
-    };
+    const initialPurchaser = this.usersService.loadDefaultPurchaser() || '';
+    this.purchaseForm = this.fb.group({
+      purchase: ['', Validators.required],
+      price: ['', Validators.required],
+      calculatedPrice: [null, Validators.required],
+      purchaser: [initialPurchaser, Validators.required],
+      participants: [[], Validators.required],
+    });
+    this.purchaseForm.get('price').valueChanges.subscribe(price => this.purchaseForm.patchValue({
+        calculatedPrice: this.evaluateTerm(price),
+    }));
   }
 
   save(): void {
-    if (!this.form.valid) {
+    if (!this.purchaseForm.valid) {
+      console.warn('invalid', this.purchaseForm.value)
       this.snackBar.open('Please check your inputs!', undefined, {duration: 2000});
       return;
     }
+    const val = this.purchaseForm.value;
     this.purchasesService
       .savePurchase({
-        price: this.pricePreview,
-        purchaser: this.model.purchaser,
-        participants: this.model.participants,
+        purchase: val.purchase,
+        price: val.calculatedPrice,
+        purchaser: val.purchaser,
+        participants: val.participants,
       })
       .subscribe(
         () => console.log('redirect to list'),
@@ -56,7 +66,7 @@ export class AddPurchaseComponent implements OnInit {
     try {
       eval(`result = ${sanitizedTerm};`);
     } catch (e) {
-      result = undefined;
+      result = null;
     }
     return result;
   }

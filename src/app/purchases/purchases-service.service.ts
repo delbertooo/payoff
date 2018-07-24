@@ -43,6 +43,7 @@ export class PurchasesService {
 }
 
 export interface PurchaseCreate {
+  purchase: string,
   price: number,
   purchaser: string,
   participants: string[],

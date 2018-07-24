@@ -11,25 +11,25 @@
 </mat-toolbar>
 
 <div class="form-container">
-  <form #form="ngForm">
+  <form [formGroup]="purchaseForm">
     <mat-form-field>
-      <input matInput placeholder="Purchase">
+      <input matInput placeholder="Purchase" formControlName="purchase">
     </mat-form-field>
 
 
     <mat-form-field>
-      <input matInput placeholder="Price" name="price" required [ngModel]="model.price" (ngModelChange)="model.price = $event; pricePreview = evaluateTerm($event)">
-      <mat-hint align="end">= {{pricePreview === undefined ? 'NaN' : pricePreview | currency:'EUR'}}</mat-hint>
+      <input matInput placeholder="Price" formControlName="price">
+      <mat-hint align="end">= {{calculatedPrice.value === null ? 'NaN' : calculatedPrice.value | currency:'EUR'}}</mat-hint>
     </mat-form-field>
 
     <mat-form-field>
-      <mat-select placeholder="Purchaser" name="purchaser" required [(ngModel)]="model.purchaser">
+      <mat-select placeholder="Purchaser" formControlName="purchaser">
         <mat-option *ngFor="let purchaser of purchasers$ | async" value="purchaser">{{purchaser}}</mat-option>
       </mat-select>
     </mat-form-field>
 
     <mat-form-field>
-      <mat-select placeholder="Participants" name="participants" [(ngModel)]="model.participants" multiple>
+      <mat-select placeholder="Participants" formControlName="participants" multiple>
         <mat-option *ngFor="let participant of purchasers$ | async" [value]="participant">{{participant}}</mat-option>
       </mat-select>
     </mat-form-field>
