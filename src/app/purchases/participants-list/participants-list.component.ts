@@ -17,4 +17,11 @@ export class ParticipantsListComponent implements OnInit {
   ngOnInit() {
   }
 
+  shortenName(name: string) {
+    return name
+      .replace(/[aeiouäöü]/ig, '')
+      .substr(0, 3)
+      .toUpperCase();
+  }
+
 }

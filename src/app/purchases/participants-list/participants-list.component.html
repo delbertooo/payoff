@@ -1,6 +1,6 @@
 <mat-chip-list>
-  <mat-chip color="primary" selected>{{purchaser}}</mat-chip>
-  <mat-chip color="accent" selected *ngFor="let participant of participants">{{participant}}</mat-chip>
-  <mat-chip *ngFor="let x of [1,2,3,4,5,6,7,8,9,10]">OF</mat-chip>
-  <mat-chip>TF</mat-chip>
+  <mat-chip color="primary" selected [matTooltip]="purchaser">{{shortenName(purchaser)}}</mat-chip>
+  <mat-chip color="accent" selected *ngFor="let participant of participants" [matTooltip]="participant">{{shortenName(participant)}}</mat-chip>
+  <!--<mat-chip *ngFor="let x of [1,2,3,4,5,6,7,8,9,10]">OF</mat-chip>
+  <mat-chip>TF</mat-chip>-->
 </mat-chip-list>

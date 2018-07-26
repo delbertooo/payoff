@@ -1,19 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatIconModule } from '@angular/material/icon';
-import { MatButtonModule } from '@angular/material/button';
-import { MatListModule } from '@angular/material/list';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatSelectModule } from '@angular/material/select';
-import { MatChipsModule } from '@angular/material/chips';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
-
 import { FancyDateComponent } from './fancy-date/fancy-date.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import {
+  MatTooltipModule, MatToolbarModule, MatIconModule, MatButtonModule, MatListModule, MatFormFieldModule,
+  MatInputModule, MatSelectModule, MatChipsModule, MatSnackBarModule
+} from '@angular/material';
 
 @NgModule({
   imports: [
@@ -27,6 +19,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatSelectModule,
     MatChipsModule,
     MatSnackBarModule,
+    MatTooltipModule,
     ReactiveFormsModule,
   ],
   exports: [
@@ -41,6 +34,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     FancyDateComponent,
     MatChipsModule,
     MatSnackBarModule,
+    MatTooltipModule,
     ReactiveFormsModule,
   ],
   declarations: [
