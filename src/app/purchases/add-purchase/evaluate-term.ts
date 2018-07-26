@@ -1,3 +1,4 @@
+import * as mexp from 'math-expression-evaluator';
 
 export function evaluateTerm(input: string): number | null {
   let result;
@@ -6,7 +7,7 @@ export function evaluateTerm(input: string): number | null {
   }
   const sanitizedTerm = input.replace(/,/g, '.').replace(/[^0-9().+\-*/ ]/g, '');
   try {
-    eval(`result = ${sanitizedTerm};`);
+    result = mexp.eval(sanitizedTerm);
   } catch (e) {
     result = null;
   }
