@@ -24,3 +24,21 @@ body {
 .toolbar-spacer {
     flex: 1 1 auto;
 }
+
+.mat-drawer-container.app-sidenav-container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.app-fixed-toolbar {
+    position: fixed;
+    top: 0;
+    z-index: 1;
+}
+
+.app-fixed-toolbar-content {
+    padding-top: 64px;
+}

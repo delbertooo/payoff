@@ -1,0 +1,11 @@
+<mat-toolbar color="primary">
+    <a routerLink="/" mat-icon-button>
+      <mat-icon>arrow_back</mat-icon>
+    </a>
+    Statistics
+  </mat-toolbar>
+  
+  <mat-list *ngIf="(summary$ | async) as summary">
+    <mat-list-item><span class="key">Total balance:</span><span class="value">{{summary.totalPrice | currency}}</span></mat-list-item>
+  </mat-list>
+  

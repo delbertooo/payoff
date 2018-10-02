@@ -1,0 +1,11 @@
+.key, .value {
+    flex: 1 1 auto;
+}
+
+.key {
+    text-align: right;
+    padding-right: .5rem;
+}
+.value {
+    padding-left: .5rem;
+}

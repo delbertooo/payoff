@@ -4,7 +4,7 @@ import { FancyDateComponent } from './fancy-date/fancy-date.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import {
   MatTooltipModule, MatToolbarModule, MatIconModule, MatButtonModule, MatListModule, MatFormFieldModule,
-  MatInputModule, MatSelectModule, MatChipsModule, MatSnackBarModule
+  MatInputModule, MatSelectModule, MatChipsModule, MatSnackBarModule, MatSidenavModule
 } from '@angular/material';
 
 @NgModule({
@@ -20,6 +20,7 @@ import {
     MatChipsModule,
     MatSnackBarModule,
     MatTooltipModule,
+    MatSidenavModule,
     ReactiveFormsModule,
   ],
   exports: [
@@ -35,6 +36,7 @@ import {
     MatChipsModule,
     MatSnackBarModule,
     MatTooltipModule,
+    MatSidenavModule,
     ReactiveFormsModule,
   ],
   declarations: [
