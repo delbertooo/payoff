@@ -3,9 +3,8 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { AddPurchaseComponent } from './add-purchase.component';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { PurchasesService } from '../purchases-service.service';
-import { UsersService } from '../users-service.service';
 import { MatSnackBar } from '@angular/material';
+import { PurchasesService, UsersService } from '@app-shared';
 
 describe('AddPurchaseComponent', () => {
   let component: AddPurchaseComponent;

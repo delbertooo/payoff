@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PurchasesService, PurchaseYear, Purchase } from '../purchases-service.service';
+import { PurchasesService, PurchaseYear, Purchase } from '@app-shared';
 import { Observable } from 'rxjs/Observable';
 
 @Component({

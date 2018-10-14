@@ -10,6 +10,13 @@
 
 </mat-toolbar>
 
+Personal settings: modify "who you are" (default purchaser, default personal statistics).
 <div class="form-container">
-  Personal settings: modify "who you are" (default purchaser, default personal statistics).
+  <form [formGroup]="settingsForm">
+    <mat-form-field>
+      <mat-select placeholder="Default purchaser" required formControlName="defaultPurchaser">
+        <mat-option *ngFor="let purchaser of purchasers$ | async" [value]="purchaser">{{purchaser}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
 </div>

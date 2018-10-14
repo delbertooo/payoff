@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { SettingsRoutingModule } from './settings-routing.module';
 import { PersonalSettingsComponent } from './personal-settings/personal-settings.component';
-import { SharedModule } from '../shared/shared.module';
+import { SharedModule } from '@app-shared';
 
 @NgModule({
   imports: [

@@ -8,6 +8,11 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "target": "es5",
+    "baseUrl": "./src",
+    "paths": {
+      "@app-shared": ["app/shared"],
+      "@app-shared/*": ["app/shared/*"]
+    },
     "typeRoots": [
       "node_modules/@types"
     ],

@@ -6,6 +6,8 @@ import {
   MatTooltipModule, MatToolbarModule, MatIconModule, MatButtonModule, MatListModule, MatFormFieldModule,
   MatInputModule, MatSelectModule, MatChipsModule, MatSnackBarModule, MatSidenavModule
 } from '@angular/material';
+import { PurchasesService } from './purchases/purchases-service.service';
+import { UsersService } from './users-service.service';
 
 @NgModule({
   imports: [
@@ -41,6 +43,10 @@ import {
   ],
   declarations: [
     FancyDateComponent,
+  ],
+  providers: [
+    PurchasesService,
+    UsersService,
   ]
 })
 export class SharedModule { }
