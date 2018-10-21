@@ -24,7 +24,7 @@
 
     <mat-form-field>
       <mat-select placeholder="Purchaser" required formControlName="purchaser">
-        <mat-option *ngFor="let purchaser of purchasers$ | async" value="purchaser">{{purchaser}}</mat-option>
+        <mat-option *ngFor="let purchaser of purchasers$ | async" [value]="purchaser">{{purchaser}}</mat-option>
       </mat-select>
     </mat-form-field>
 
