@@ -8,6 +8,7 @@ import {
 } from '@angular/material';
 import { PurchasesService } from './purchases/purchases-service.service';
 import { UsersService } from './users-service.service';
+import { StatisticsService } from './statistics.service';
 
 @NgModule({
   imports: [
@@ -47,6 +48,7 @@ import { UsersService } from './users-service.service';
   providers: [
     PurchasesService,
     UsersService,
+    StatisticsService,
   ]
 })
 export class SharedModule { }

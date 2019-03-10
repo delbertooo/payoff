@@ -3,8 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { StatisticsRoutingModule } from './statistics-routing.module';
 import { SummaryComponent } from './summary/summary.component';
-import { StatisticsService } from './statistics.service';
-import { SharedModule } from '../shared/shared.module';
+import { SharedModule } from '@app-shared';
 
 @NgModule({
   imports: [
@@ -13,6 +12,6 @@ import { SharedModule } from '../shared/shared.module';
     SharedModule,
   ],
   declarations: [SummaryComponent],
-  providers: [StatisticsService],
+  providers: [],
 })
 export class StatisticsModule { }

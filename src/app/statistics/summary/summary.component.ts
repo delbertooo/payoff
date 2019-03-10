@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { Summary, StatisticsService } from '../statistics.service';
+import { Summary, StatisticsService } from '@app-shared';
 
 @Component({
   selector: 'app-summary',
