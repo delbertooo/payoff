@@ -2,21 +2,36 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/delay';
+import { ApiHttp } from '@app-core';
 
 
 @Injectable()
 export class PurchasesService {
 
-  constructor() { }
+  constructor(
+    private http: ApiHttp,
+  ) { }
 
   findYears(): Observable<PurchaseYear[]> {
+    return this.http.get('/purchases/by-year');
+  }
+
+  findPurchases(year: number): Observable<Purchase[]> {
+    return this.http.get(`/purchases/by-year/${year}`);
+  }
+
+  savePurchase(create: PurchaseCreate): Observable<void> {
+    return this.http.post('/purchases', create);
+  }
+
+  findYears2(): Observable<PurchaseYear[]> {
     return Observable.of([
       { year: 2018, purchases: 1 },
       { year: 2017, purchases: 102 }
     ]).delay(250);
   }
 
-  findPurchases(year: number): Observable<Purchase[]> {
+  findPurchases2(year: number): Observable<Purchase[]> {
     return Observable.of([
       {
         item: 'Lachs in Safransoße',
@@ -35,7 +50,7 @@ export class PurchasesService {
     ]).delay(250);
   }
 
-  savePurchase(create: PurchaseCreate): Observable<void> {
+  savePurchase2(create: PurchaseCreate): Observable<void> {
     console.log('Save', create);
     return Observable.of(null).delay(250);
   }

@@ -25,4 +25,9 @@ export class PersonalSettingsComponent implements OnInit {
     });
   }
 
+  save() {
+    const val = this.settingsForm.value;
+    this.usersService.saveDefaultPurchaser(val.defaultPurchaser);
+  }
+
 }
