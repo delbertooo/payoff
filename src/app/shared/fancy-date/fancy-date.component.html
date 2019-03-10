@@ -1,4 +1,4 @@
-<div class="fancy-date" ng-if="date">
+<div class="fancy-date" ng-if="date" matTooltip="{{date|date:'medium'}}" matTooltipPosition="after">
   <div>{{date | date:'d'}}</div>
   <div>{{date | date:'MMM'}}</div>
 </div>
