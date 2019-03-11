@@ -4,8 +4,23 @@
     </a>
     Statistics
   </mat-toolbar>
+
+
   
   <mat-list *ngIf="(summary$ | async) as summary">
-    <mat-list-item><span class="key">Total balance:</span><span class="value">{{summary.totalPrice | currency}}</span></mat-list-item>
+    <mat-list-item>
+      <span class="key">Show statistics for</span>
+        <form [formGroup]="purchaserForm" class="value">
+            <mat-form-field>
+              <mat-select formControlName="purchaser">
+                <mat-option *ngFor="let purchaser of purchasers$ | async" [value]="purchaser">{{purchaser}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </form>
+    </mat-list-item>
+    <ng-container *ngFor="let balance of summary.balances">
+      <mat-list-item><span class="key">{{balance.balance | currency}}</span><span class="value">{{balance.user}}</span></mat-list-item>
+    </ng-container>
+    <mat-list-item><span class="key">{{summary.totalPrice | currency}}</span><span class="value">System-wide balance</span></mat-list-item>
   </mat-list>
   

@@ -18,7 +18,8 @@ export class StatisticsService {
     private apiHttp: ApiHttp
   ) { }
 
-  loadSummary(): Observable<Summary> {
-    return this.apiHttp.get('/summary');
+  loadSummary(forPurchaser?: string): Observable<Summary> {
+    const params = forPurchaser ? { user: forPurchaser } : {};
+    return this.apiHttp.get('/summary', { params });
   }
 }
