@@ -9,7 +9,7 @@
   
   <mat-list *ngIf="(summary$ | async) as summary">
     <mat-list-item>
-      <span class="key">Show statistics for</span>
+      <span class="key select-label">Show statistics for</span>
         <form [formGroup]="purchaserForm" class="value">
             <mat-form-field>
               <mat-select formControlName="purchaser">
