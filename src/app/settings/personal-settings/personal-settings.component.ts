@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UsersService } from '@app-shared';
 import { Observable } from 'rxjs/Observable';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-personal-settings',
@@ -15,6 +16,7 @@ export class PersonalSettingsComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private usersService: UsersService,
+    private router: Router,
   ) { }
 
   ngOnInit() {
@@ -28,6 +30,7 @@ export class PersonalSettingsComponent implements OnInit {
   save() {
     const val = this.settingsForm.value;
     this.usersService.saveDefaultPurchaser(val.defaultPurchaser);
+    this.router.navigate(['/']);
   }
 
 }
