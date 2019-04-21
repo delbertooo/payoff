@@ -4,10 +4,10 @@ import { ApiHttp } from '@app-core';
 
 
 export interface Summary {
-  totalPrice: number;
+  formattedTotalPrice: number;
   balances: [{
     user: string;
-    balance: number;
+    formattedBalance: string;
   }]
 }
 

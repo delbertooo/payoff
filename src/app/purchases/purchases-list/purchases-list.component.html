@@ -33,7 +33,7 @@
               -->
               <!--<p matLine> {{purchase.date | date}}</p>-->
               <app-participants-list matLine [purchaser]="purchase.purchaser" [participants]="purchase.participants"></app-participants-list>
-              <div style="display: inline-block">{{purchase.price|currency}}</div>
+              <div style="display: inline-block">{{purchase.formattedPrice}}</div>
             </mat-list-item>
           </ng-container>
         </ng-container>
