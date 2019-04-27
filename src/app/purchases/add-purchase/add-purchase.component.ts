@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import { PurchasesService, UsersService } from '@app-shared';
 import { FormGroup, FormBuilder, Validators, AbstractControl, ValidatorFn, ValidationErrors } from '@angular/forms';
 import { evaluateTerm } from './evaluate-term';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-purchase',
@@ -19,6 +20,7 @@ export class AddPurchaseComponent implements OnInit {
     private purchasesService: PurchasesService,
     private snackBar: MatSnackBar,
     private fb: FormBuilder,
+    private router: Router,
   ) { }
 
   get calculatedPrice(): AbstractControl {
@@ -65,7 +67,10 @@ export class AddPurchaseComponent implements OnInit {
         participants: val.participants,
       })
       .subscribe(
-        () => console.log('redirect to list'),
+        () => {
+          this.snackBar.open('Purchase added.', undefined, { duration: 2000 })
+          this.router.navigate(['/'])
+        },
         e => this.snackBar.open('An error occured :(', undefined, { duration: 2000 })
       );
   }
