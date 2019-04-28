@@ -1,5 +1,14 @@
 import { Component, OnInit, Input } from '@angular/core';
 
+interface Share {
+  purchaser: {
+    shortName: string
+    name: string
+  }
+  formattedShareOfPrice: string
+  shareOfPrice: number
+}
+
 @Component({
   selector: 'app-participants-list',
   templateUrl: './participants-list.component.html',
@@ -8,20 +17,13 @@ import { Component, OnInit, Input } from '@angular/core';
 export class ParticipantsListComponent implements OnInit {
 
   @Input()
-  purchaser: string;
+  purchaser: Share;
   @Input()
-  participants: string[]
+  participants: Share[]
 
   constructor() { }
 
   ngOnInit() {
-  }
-
-  shortenName(name: string) {
-    return name
-      .replace(/[aeiouäöü]/ig, '')
-      .substr(0, 3)
-      .toUpperCase();
   }
 
 }
