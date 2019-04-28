@@ -9,6 +9,7 @@ import {
 import { PurchasesService } from './purchases/purchases-service.service';
 import { UsersService } from './users-service.service';
 import { StatisticsService } from './statistics.service';
+import { BalanceColoredComponent } from './balance-colored/balance-colored.component';
 
 @NgModule({
   imports: [
@@ -36,6 +37,7 @@ import { StatisticsService } from './statistics.service';
     MatInputModule,
     MatSelectModule,
     FancyDateComponent,
+    BalanceColoredComponent,
     MatChipsModule,
     MatSnackBarModule,
     MatTooltipModule,
@@ -44,6 +46,7 @@ import { StatisticsService } from './statistics.service';
   ],
   declarations: [
     FancyDateComponent,
+    BalanceColoredComponent,
   ],
   providers: [
     PurchasesService,

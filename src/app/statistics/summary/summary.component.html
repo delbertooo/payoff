@@ -19,8 +19,16 @@
           </form>
     </mat-list-item>
     <ng-container *ngFor="let balance of summary.balances">
-      <mat-list-item><span class="key">{{balance.formattedBalance}}</span><span class="value">{{balance.user}}</span></mat-list-item>
+      <mat-list-item>
+        <span class="key">
+          <app-balance-colored [balance]="balance.balance">{{balance.formattedBalance}}</app-balance-colored>
+        </span>
+        <span class="value">{{balance.user}}</span></mat-list-item>
     </ng-container>
-    <mat-list-item><span class="key">{{summary.formattedTotalPrice}}</span><span class="value">System-wide balance</span></mat-list-item>
+    <mat-list-item>
+      <span class="key">
+        <app-balance-colored [balance]="summary.totalPrice">{{summary.formattedTotalPrice}}</app-balance-colored>
+      </span>
+      <span class="value">System-wide balance</span></mat-list-item>
   </mat-list>
   
