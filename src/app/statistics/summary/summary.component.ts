@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { Summary, StatisticsService, UsersService } from '@app-shared';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
