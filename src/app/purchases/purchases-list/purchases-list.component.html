@@ -24,14 +24,8 @@
           </h3>
           <ng-container *ngIf="isYearLoaded(year)">
             <mat-list-item *ngFor="let purchase of loadedYears[year.year] | async">
-              <!--<mat-icon matListIcon>folder</mat-icon>-->
               <app-fancy-date matListAvatar [date]="purchase.date"></app-fancy-date>
-              <h4 matLine>{{purchase.item}}</h4>
-              <!--
-              <p matLine><span class="participant-detail"><span>delbertooo</span> <span>{{13.37|currency}}</span></span></p>
-              <p matLine><span class="participant-detail"><span>masuuk</span> <span>{{-6.37|currency}}</span></span></p>
-              -->
-              <!--<p matLine> {{purchase.date | date}}</p>-->
+              <h4 matLine><span class="full-text">{{purchase.item}}</span></h4>
               <app-participants-list matLine [purchaser]="purchase.purchaser" [participants]="purchase.participants"></app-participants-list>
               <div style="display: inline-block">{{purchase.formattedPrice}}</div>
             </mat-list-item>

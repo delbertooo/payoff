@@ -11,3 +11,13 @@
 .app-fixed-toolbar-content {
     margin-bottom: 88px;
 }
+
+.mat-list-item:hover {
+    background: rgba(0,0,0,.04);
+}
+
+.full-text {
+    white-space: normal;
+    text-overflow: unset;
+    overflow: initial;
+}
