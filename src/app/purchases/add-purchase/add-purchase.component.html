@@ -4,7 +4,7 @@
   </a>
   Add purchase
   <span class="toolbar-spacer"></span>
-  <button mat-icon-button (click)="save()">
+  <button mat-icon-button (click)="save()" [disabled]="busy">
       <mat-icon>check</mat-icon>
   </button>
 

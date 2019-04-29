@@ -5,6 +5,7 @@ import { PurchasesService, UsersService } from '@app-shared';
 import { FormGroup, FormBuilder, Validators, AbstractControl, ValidatorFn, ValidationErrors } from '@angular/forms';
 import { evaluateTerm } from './evaluate-term';
 import { Router } from '@angular/router';
+import { finalize } from 'rxjs/operators';
 
 @Component({
   selector: 'app-add-purchase',
@@ -14,6 +15,7 @@ import { Router } from '@angular/router';
 export class AddPurchaseComponent implements OnInit {
   purchasers$: Observable<string[]>;
   purchaseForm: FormGroup;
+  busy: boolean;
 
   constructor(
     private usersService: UsersService,
@@ -28,6 +30,7 @@ export class AddPurchaseComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.busy = false;
     this.purchasers$ = this.usersService.findPurchasers();
     const initialPurchaser = this.usersService.loadDefaultPurchaser() || '';
     this.purchaseForm = this.fb.group({
@@ -58,6 +61,7 @@ export class AddPurchaseComponent implements OnInit {
       this.snackBar.open('Please check your input data!', undefined, { duration: 2000 });
       return;
     }
+    this.busy = true;
     const val = this.purchaseForm.value;
     this.purchasesService
       .savePurchase({
@@ -66,6 +70,7 @@ export class AddPurchaseComponent implements OnInit {
         purchaser: val.purchaser,
         participants: val.participants,
       })
+      .pipe(finalize(() => this.busy = false))
       .subscribe(
         () => {
           this.snackBar.open('Purchase added.', undefined, { duration: 2000 })
