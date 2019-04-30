@@ -27,7 +27,7 @@
               <app-fancy-date matListAvatar [date]="purchase.date"></app-fancy-date>
               <h4 matLine><span class="full-text">{{purchase.item}}</span></h4>
               <app-participants-list matLine [purchaser]="purchase.purchaser" [participants]="purchase.participants"></app-participants-list>
-              <div style="display: inline-block">{{purchase.formattedPrice}}</div>
+              <span class="purchase-price">{{purchase.formattedPrice}}</span>
             </mat-list-item>
           </ng-container>
         </ng-container>
